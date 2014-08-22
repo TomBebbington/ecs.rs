@@ -1,0 +1,19 @@
+[project]
+
+name = "ecs"
+version = "0.0.1"
+authors = ["Tom Bebbington <tophattedcoder@gmail.com>"]
+
+[lib]
+
+name = "ecs"
+path = "src/lib.rs"
+
+
+[[bin]]
+
+name = "ecs"
+path = "src/main.rs"
+
+[dependencies.anymap]
+git = "https://github.com/chris-morgan/anymap"
