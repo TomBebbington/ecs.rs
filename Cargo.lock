@@ -3,10 +3,67 @@ name = "ecs"
 version = "0.0.1"
 dependencies = [
  "anymap 0.9.0 (git+https://github.com/chris-morgan/anymap#c2473c1fceb1878e1db0a9050c2764938872e241)",
+ "graphics 0.0.0 (git+https://github.com/PistonDevelopers/rust-graphics#787cd1173bab3f53592172237d2b6d2c678d0de6)",
+ "opengl_graphics 0.0.0 (git+https://github.com/PistonDevelopers/opengl_graphics#8a52a143d12f848900f7e8c2cab93d9e2330f4c4)",
 ]
 
 [[package]]
 name = "anymap"
 version = "0.9.0"
 source = "git+https://github.com/chris-morgan/anymap#c2473c1fceb1878e1db0a9050c2764938872e241"
+
+[[package]]
+name = "gl"
+version = "0.0.1"
+source = "git+https://github.com/bjz/gl-rs#8bf7197ac6769a208d6bdc30070958034ecf95e8"
+dependencies = [
+ "gl_generator 0.0.1 (git+https://github.com/bjz/gl-rs#8bf7197ac6769a208d6bdc30070958034ecf95e8)",
+]
+
+[[package]]
+name = "gl_generator"
+version = "0.0.1"
+source = "git+https://github.com/bjz/gl-rs#8bf7197ac6769a208d6bdc30070958034ecf95e8"
+dependencies = [
+ "khronos_api 0.0.1 (git+https://github.com/bjz/gl-rs#8bf7197ac6769a208d6bdc30070958034ecf95e8)",
+ "rust-xml 0.1.0 (git+https://github.com/netvl/rust-xml#361fc1ac28422186a97b377ad9c1d571a2b36f6a)",
+]
+
+[[package]]
+name = "graphics"
+version = "0.0.0"
+source = "git+https://github.com/PistonDevelopers/rust-graphics#787cd1173bab3f53592172237d2b6d2c678d0de6"
+dependencies = [
+ "vecmath 0.0.0 (git+https://github.com/PistonDevelopers/vecmath#6e1dd80d0e111d473ecf089203067720a66ad724)",
+]
+
+[[package]]
+name = "image"
+version = "0.0.0"
+source = "git+https://github.com/PistonDevelopers/rust-image#8d3acd8a086bec7b7c8cd4e97be9bfbe6e8941ac"
+
+[[package]]
+name = "khronos_api"
+version = "0.0.1"
+source = "git+https://github.com/bjz/gl-rs#8bf7197ac6769a208d6bdc30070958034ecf95e8"
+
+[[package]]
+name = "opengl_graphics"
+version = "0.0.0"
+source = "git+https://github.com/PistonDevelopers/opengl_graphics#8a52a143d12f848900f7e8c2cab93d9e2330f4c4"
+dependencies = [
+ "gl 0.0.1 (git+https://github.com/bjz/gl-rs#8bf7197ac6769a208d6bdc30070958034ecf95e8)",
+ "graphics 0.0.0 (git+https://github.com/PistonDevelopers/rust-graphics#787cd1173bab3f53592172237d2b6d2c678d0de6)",
+ "image 0.0.0 (git+https://github.com/PistonDevelopers/rust-image#8d3acd8a086bec7b7c8cd4e97be9bfbe6e8941ac)",
+]
+
+[[package]]
+name = "rust-xml"
+version = "0.1.0"
+source = "git+https://github.com/netvl/rust-xml#361fc1ac28422186a97b377ad9c1d571a2b36f6a"
+
+[[package]]
+name = "vecmath"
+version = "0.0.0"
+source = "git+https://github.com/PistonDevelopers/vecmath#6e1dd80d0e111d473ecf089203067720a66ad724"
 

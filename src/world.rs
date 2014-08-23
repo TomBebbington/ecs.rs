@@ -1,5 +1,4 @@
 use entity::Entity;
-use std::any::Any;
 use system::System;
 /// A world
 pub struct World {
@@ -20,12 +19,16 @@ impl World {
 		let last = self.entities.len() - 1;
 		self.entities.get_mut(last)
 	}
+	/// Add a system
+	pub fn add_sys<S:System>(&mut self, system: S) {
+		self.systems.push(box system as Box<System>)
+	}
 	/// Run a generation on all the entities and stuff
-	pub fn run(&mut self, i:&Any) {
+	pub fn run(&mut self, delta:f64) {
 		for entity in self.entities.mut_iter() {
 			for system in self.systems.mut_iter() {
 				if system.can_process(entity) {
-					system.run(entity, i)
+					system.run(entity, delta)
 				}
 			}
 		}

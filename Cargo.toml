@@ -9,7 +9,6 @@ authors = ["Tom Bebbington <tophattedcoder@gmail.com>"]
 name = "ecs"
 path = "src/lib.rs"
 
-
 [[bin]]
 
 name = "ecs"
@@ -17,3 +16,9 @@ path = "src/main.rs"
 
 [dependencies.anymap]
 git = "https://github.com/chris-morgan/anymap"
+
+[dependencies.graphics]
+git = "https://github.com/PistonDevelopers/rust-graphics"
+
+[dependencies.opengl_graphics]
+git = "https://github.com/PistonDevelopers/opengl_graphics"
