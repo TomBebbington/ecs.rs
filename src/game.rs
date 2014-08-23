@@ -1,6 +1,7 @@
 use entity::Entity;
 use system::System;
 use graphics::*;
+use graphics::internal::*;
 use opengl_graphics::{Gl, Texture};
 /// A 2D position
 pub struct Position2d {
@@ -44,13 +45,15 @@ pub struct Sprite {
 /// A graphics system
 pub struct GraphicsSystem {
 	pub context: Context,
-	pub backend: Gl
+	pub backend: Gl,
+	pub background_color: Color
 }
 impl GraphicsSystem {
-	pub fn new<Back:BackEnd<IS>, IS:ImageSize>(width: f64, height:f64) -> GraphicsSystem {
+	pub fn new(width: f64, height:f64, bg_color: Color) -> GraphicsSystem {
 		GraphicsSystem {
 			context: Context::abs(width, height),
-			backend: Gl::new()
+			backend: Gl::new(),
+			background_color: bg_color
 		}
 	}
 }
@@ -62,5 +65,12 @@ impl System for GraphicsSystem {
 		let position = e.get::<Position2d>().unwrap();
 		let texture = &e.get::<Sprite>().unwrap().texture;
 		self.context.trans(position.x, position.y).image(texture).draw(&mut self.backend);
+	}
+	fn run_all<I:Iterator<Entity>>(&mut self, mut iter:I, delta: f64) {
+		self.context = Context::new();
+		self.context.color(self.background_color).draw(&mut self.backend);
+		for mut entity in iter {
+			self.run(&mut entity, delta)
+		}
 	}
 }
