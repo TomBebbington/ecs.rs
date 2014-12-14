@@ -1,7 +1,7 @@
-[project]
+[package]
 
 name = "ecs"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["Tom Bebbington <tophattedcoder@gmail.com>"]
 
 [lib]
@@ -13,12 +13,7 @@ path = "src/lib.rs"
 
 name = "ecs"
 path = "src/main.rs"
+doc = false
 
-[dependencies.anymap]
-git = "https://github.com/chris-morgan/anymap"
-
-[dependencies.graphics]
-git = "https://github.com/PistonDevelopers/rust-graphics"
-
-[dependencies.opengl_graphics]
-git = "https://github.com/PistonDevelopers/opengl_graphics"
+[dependencies]
+time = "*"
