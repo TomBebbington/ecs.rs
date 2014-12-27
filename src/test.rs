@@ -34,17 +34,16 @@ fn test_bag_length() {
 #[test]
 fn test_bag_macro() {
     let ref bag = bag![3u, 10u, 32u];
-    assert_eq!(bag.get(0), 3u);
-    assert_eq!(bag.get(1), 10u);
-    assert_eq!(bag.get(2), 32u);
+    assert!(bag.get::<uint>(0) == 3u);
+    assert!(bag.get::<uint>(1) == 10u);
+    assert!(bag.get::<uint>(2) == 32u);
 }
 #[test]
 fn test_into_bag() {
     let bag: Bag = vec![1u, 2u, 3u].into_bag();
-    assert_eq!(3, bag.len());
-    assert_eq!(1u, bag.get(0));
-    assert_eq!(2u, bag.get(1));
-    assert_eq!(3u, bag.get(2));
+    assert!(bag.get::<uint>(0) == 1u);
+    assert!(bag.get::<uint>(1) == 2u);
+    assert!(bag.get::<uint>(2) == 3u);
     assert_eq!(bag.into_vec(), vec![1u, 2u, 3u]);
 }
 
@@ -56,7 +55,7 @@ fn test_bag_alloc() {
     assert_eq!(bag.len(), 2);
     assert_eq!(bag.capacity(), 2);
     bag.add(205u);
-    assert_eq!(bag.get(bad_index), 304u);
+    assert_eq!(bag.get::<uint>(bad_index), 304u);
     assert_eq!(bag.len(), 3);
     assert_eq!(bag.capacity(), 3);
 }
