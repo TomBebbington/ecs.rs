@@ -6,8 +6,8 @@ use entity::{Entity, EntityManager, EntityRef, EntityRefMut};
 use world::World;
 /// Processes components of entities
 /// With each Processor running continuously as if it has a private internal thread,
-/// performing global actions on every Entity that possesses a Component of the same
-/// aspect as the Processor
+/// performing actions on every Entity that possesses a Component of a matching
+/// aspect to the Processor
 pub trait Processor: 'static {
     /// Process a single entity with a delta in seconds
     fn run(&mut self, entity: EntityRefMut, delta:f64);
