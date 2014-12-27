@@ -1,20 +1,11 @@
 #![feature(phase)]
 #[phase(link, plugin)]
-extern crate "eccles" as ecs;
-use ecs::{World, EntityRef, EntityRefMut};
+extern crate eccles;
+use eccles::{World, EntityRefMut, Processor};
 
 fn main() {
     let mut world = world!{
-        components: [Position, Velocity],
-        processors: [
-            |mut entity:EntityRefMut, delta: f64| {
-                let vel = entity.get::<Velocity>().unwrap();
-                let pos = entity.borrow_mut::<Position>().unwrap();
-                pos.x += vel.x * delta;
-                pos.y += vel.y * delta;
-            } for
-                aspect!(Position & Velocity)
-        ]
+        components: [Position, Velocity]
     };
     let entities = world.build_entities(10, entity![
         Position {
@@ -29,6 +20,16 @@ fn main() {
     println!("{}", world.entities().collect::<Vec<_>>());
     world.update(1.0);
     println!("{}", world.get_entity(entities[0]).get::<Position>().x);
+}
+
+pub struct Movement;
+impl Processor for Movement {
+    fn run(&mut self, mut entity:EntityRefMut, delta: f64) {
+        let vel = entity.get::<Velocity>().unwrap();
+        let pos = entity.borrow_mut::<Position>().unwrap();
+        pos.x += vel.x * delta;
+        pos.y += vel.y * delta;
+    }
 }
 
 comp!(Position = {

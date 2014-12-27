@@ -201,7 +201,7 @@ impl<'a> EntityRefMut<'a> {
         self.components.borrow_mut(self.entity)
     }
     #[inline(always)]
-    /// Remove the component from the component list attached to this entity
+    /// Remove the component for the given entity
     pub fn remove<T:Component>(self) -> EntityRefMut<'a> {
         self.components.remove::<T>(self.entity);
         self
@@ -226,11 +226,11 @@ pub trait EntityBuilder {
         }
     }
 }
-impl<'a> EntityBuilder for |EntityRefMut|:'a {
+impl<'a, C:FnMut(EntityRefMut)> EntityBuilder for C {
     #[inline(always)]
-    fn build(&mut self, mut entity: EntityRefMut) -> Entity {
+    fn build(&mut self, entity: EntityRefMut) -> Entity {
         let entity_id = entity.entity;
-        entity = entity.enable();
+        entity.entities.enable(entity_id);
         (*self)(entity);
         entity_id
     }

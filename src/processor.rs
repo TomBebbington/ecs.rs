@@ -23,37 +23,9 @@ pub trait Processor: 'static {
         }
     }
 }
-impl Processor for |EntityRefMut, f64|:'static {
+impl<T, C> Processor for C where T:Component, C:FnMut(EntityRefMut, f64)+'static {
     fn run(&mut self, entity: EntityRefMut, delta:f64) {
         (*self)(entity, delta)
-    }
-}
-impl Processor for |f64|:'static {
-    fn run(&mut self, _: EntityRefMut, _:f64) {
-    }
-    fn run_all(&mut self, _: &mut EntityManager, _: &mut ComponentManager, _: &Vec<Entity>, delta:f64) {
-        (*self)(delta)
-    }
-}
-impl<T> Processor for |&T, f64|:'static where T:Component {
-    fn run(&mut self, entity: EntityRefMut, delta:f64) {
-        (*self)(entity.borrow().unwrap(), delta)
-    }
-}
-impl<T> Processor for |&mut T, f64|:'static where T:Component {
-    fn run(&mut self, mut entity: EntityRefMut, delta:f64) {
-        (*self)(entity.borrow_mut().unwrap(), delta)
-    }
-}
-impl<A, B> Processor for |&A, &B, f64|:'static where A:Component, B:Component {
-    fn run(&mut self, entity: EntityRefMut, delta:f64) {
-        (*self)(entity.borrow().unwrap(), entity.borrow().unwrap(), delta)
-    }
-}
-impl<A, B> Processor for |&mut A, B, f64|:'static where A:Component, B:Component+Copy {
-    fn run(&mut self, mut entity: EntityRefMut, delta:f64) {
-        let b = *entity.borrow().unwrap();
-        (*self)(entity.borrow_mut().unwrap(), b, delta)
     }
 }
 

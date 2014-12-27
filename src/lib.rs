@@ -22,7 +22,7 @@ pub use processor::{ProcessorManager, Processor, Aspect, IntervalProcessor};
 /// A debug macro to use internally
 macro_rules! debug(
     ($($value:expr),+) => (
-        if cfg!(not(ndebug)) {
+        if cfg!(not(debug)) {
             println!($($value),+)
         }
     )

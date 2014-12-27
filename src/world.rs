@@ -46,7 +46,7 @@ impl World {
     pub fn build_entity<B:EntityBuilder>(&mut self, mut builder: B) -> Entity {
         debug!("Built new entity with builder {} in world", util::get_type_name::<B>());
         let entity = builder.build(self.new_entity());
-        self.get_entity_mut(entity).enable();
+        self.entities.enable(entity);
         entity
     }
     #[inline(always)]

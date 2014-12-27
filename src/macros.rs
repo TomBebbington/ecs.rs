@@ -12,12 +12,12 @@ macro_rules! bag[
 #[macro_export]
 macro_rules! entity(
     [$($component:ty),*] => (
-        |entity:EntityRefMut| {
+        |&mut:entity:EntityRefMut| {
             entity$(.add_default::<$component>())+;
         }
     );
     [$($component:expr),*] => (
-        |entity:EntityRefMut| {
+        |&mut:entity:EntityRefMut| {
             entity$(.add($component))+;
         }
     );
