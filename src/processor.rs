@@ -1,7 +1,6 @@
 use std::cell::RefCell;
-use std::iter::Map as IMap;
 use std::time::Duration;
-use std::slice::{Items, MutItems};
+use std::slice::{Iter, IterMut};
 use comp::{Component, ComponentManager};
 use entity::{Entity, EntityManager, EntityRef, EntityRefMut};
 use world::World;
@@ -135,23 +134,13 @@ impl ProcessorManager {
     }
     #[inline(always)]
     /// Iterate through the systems and their descriptors immutably
-    pub fn iter_meta(&self) -> Items<MetaProcessor> {
+    pub fn iter(&self) -> Iter<MetaProcessor> {
         self.processors.iter()
     }
     #[inline(always)]
     /// Iterate through the systems and their descriptors mutably
-    pub fn iter_meta_mut(&mut self) -> MutItems<MetaProcessor> {
+    pub fn iter_mut(&mut self) -> IterMut<MetaProcessor> {
         self.processors.iter_mut()
-    }
-    #[inline(always)]
-    /// Iterate through the systems immutably
-    pub fn iter(&self) -> IMap<&MetaProcessor, &Box<Processor>, Items<MetaProcessor>> {
-        self.processors.iter().map(|sys| &sys.processor)
-    }
-    #[inline(always)]
-    /// Iterate through the systems mutably
-    pub fn iter_mut(&mut self) -> IMap<&mut MetaProcessor, &mut Box<Processor>, MutItems<MetaProcessor>> {
-        self.processors.iter_mut().map(|sys| &mut sys.processor)
     }
 }
 

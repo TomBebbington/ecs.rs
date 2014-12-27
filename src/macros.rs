@@ -6,7 +6,7 @@ macro_rules! bag[
         let xs: ::std::boxed::Box<[_]> = box [$($value),*];
         xs.into_bag()
     });
-]
+];
 
 /// Create a new entity with the given components in
 #[macro_export]
@@ -21,7 +21,7 @@ macro_rules! entity(
             entity$(.add($component))+;
         }
     );
-)
+);
 
 /// Define a component with the given fields and default values
 #[macro_export]
@@ -45,7 +45,7 @@ macro_rules! comp(
             }
         }
     );
-)
+);
 
 /// Make an aspect from the given filter
 #[macro_export]
@@ -60,7 +60,7 @@ macro_rules! aspect(
             $(entity.has::<$comp>())||+
         }
     );
-)
+);
 
 /// Make a world from the given components and processors
 #[macro_export]

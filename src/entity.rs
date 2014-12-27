@@ -1,8 +1,7 @@
 use std::default::Default;
 use std::collections::HashSet;
-use std::collections::hash_map::Entries;
+use std::collections::hash_set::Iter;
 use std::iter::Iterator;
-use std::iter::Map as IMap;
 use comp::{Component, ComponentType, ComponentManager};
 use world::World;
 
@@ -76,11 +75,19 @@ impl EntityManager {
     /// Iterate through all the active entities
     #[inline(always)]
     pub fn iter(&self) -> EntityIter {
-        self.active.iter().map(|&entity| entity)
+        EntityIter {
+            iter: self.active.iter()
+        }
     }
 }
-
-pub type EntityIter<'a> = IMap<'a, &'a Entity, Entity, IMap<'a, (&'a Entity, &'a ()), &'a Entity, Entries<'a, Entity, ()>>>;
+pub struct EntityIter<'a> {
+    iter: Iter<'a, Entity>
+}
+impl<'a> Iterator<Entity> for EntityIter<'a> {
+    fn next(&mut self) -> Option<Entity> {
+        self.iter.next().map(|&e| e)
+    }
+}
 
 /// An immutable reference into a world with an entity
 /// This is pretty much equivalent to a MetaEntity in most ECS implementations

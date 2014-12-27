@@ -13,8 +13,6 @@
     non_camel_case_types, unused_must_use)]
 #[cfg(bench)]
 extern crate extra;
-#[phase(link, plugin)]
-extern crate log;
 extern crate time;
 pub use bag::{Bag, IntoBag};
 pub use entity::{Entity, EntityRef, EntityRefMut, EntityBuilder, EntityManager};
@@ -22,6 +20,13 @@ pub use comp::{Component, ComponentType, ComponentManager};
 pub use world::World;
 pub use processor::{ProcessorManager, Processor, Aspect, IntervalProcessor};
 
+macro_rules! debug(
+    ($($value:expr),+) => (
+        if cfg!(not(ndebug)) {
+            println!($($value),+)
+        }
+    )
+);
 /// Constructs a vtable from a struct and a trait
 macro_rules! vtable(
     ($ty:ty as $trait_ty:ty) => (
@@ -31,7 +36,7 @@ macro_rules! vtable(
             value_obj.vtable
         }
     );
-)
+);
 
 macro_rules! cast(
     ($value: expr, $ty:ty, $vtable: expr) => (
@@ -43,7 +48,7 @@ macro_rules! cast(
             mem::transmute::<_, &mut $ty>(value)
         }
     );
-)
+);
 
 mod bag;
 mod comp;

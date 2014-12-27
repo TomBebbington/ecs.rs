@@ -85,7 +85,7 @@ impl World {
     /// Update all the processors with a delta, in seconds
     pub fn update(&mut self, delta: f64) {
         debug!("Updated processors by {} ", delta);
-        for processor in self.processors.iter_meta_mut() {
+        for processor in self.processors.iter_mut() {
             processor.processor.run_all(&mut self.entities, &mut self.components, &*processor.entities.borrow(), delta);
         }
     }

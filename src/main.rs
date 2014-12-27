@@ -34,8 +34,8 @@ fn main() {
 comp!(Position = {
     x: f64 = 0.0,
     y: f64 = 0.0
-})
+});
 comp!(Velocity = {
     x: f64 = 0.0,
     y: f64 = 0.0
-})
+});
