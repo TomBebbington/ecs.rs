@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `EntityManager` struct in crate `eccles`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, EntityManager">
+
+    <title>eccles::EntityManager - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    <link rel="shortcut icon" href="http://tombebbington.github.io/favicon.png">
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>eccles</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.Bag.html'>Bag</a><a class='struct ' href='struct.ComponentManager.html'>ComponentManager</a><a class='struct ' href='struct.ComponentType.html'>ComponentType</a><a class='struct current' href='struct.EntityManager.html'>EntityManager</a><a class='struct ' href='struct.EntityRef.html'>EntityRef</a><a class='struct ' href='struct.EntityRefMut.html'>EntityRefMut</a><a class='struct ' href='struct.IntervalProcessor.html'>IntervalProcessor</a><a class='struct ' href='struct.ProcessorManager.html'>ProcessorManager</a><a class='struct ' href='struct.World.html'>World</a></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='trait.Aspect.html'>Aspect</a><a class='trait ' href='trait.Component.html'>Component</a><a class='trait ' href='trait.EntityBuilder.html'>EntityBuilder</a><a class='trait ' href='trait.IntoBag.html'>IntoBag</a><a class='trait ' href='trait.Processor.html'>Processor</a></div><div class='block macro'><h2>Macros</h2><a class='macro ' href='macro.aspect!.html'>aspect!</a><a class='macro ' href='macro.bag!.html'>bag!</a><a class='macro ' href='macro.comp!.html'>comp!</a><a class='macro ' href='macro.entity!.html'>entity!</a><a class='macro ' href='macro.world!.html'>world!</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>eccles</a>::<wbr><a class='struct' href=''>EntityManager</a><wbr><a class='stability Experimental' title=''>Experimental</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-2460' href='../src/eccles/entity.rs.html#14-19'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct EntityManager {
+    // some fields omitted
+}</pre><div class='docblock'><p>Manages entity allocation and deletion</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Experimental' title='Experimental'></a><code>impl <a class='struct' href='../eccles/struct.EntityManager.html' title='eccles::EntityManager'>EntityManager</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../eccles/struct.EntityManager.html' title='eccles::EntityManager'>EntityManager</a></code></h4>
+<div class='docblock'><p>Create a new entity manager</p>
+</div><h4 id='method.create' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.create' class='fnname'>create</a>(&amp;mut self) -&gt; <a class='type' href='../eccles/type.Entity.html' title='eccles::Entity'>Entity</a></code></h4>
+<div class='docblock'><p>Create a new entity</p>
+</div><h4 id='method.enable' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.enable' class='fnname'>enable</a>(&amp;mut self, entity: <a class='type' href='../eccles/type.Entity.html' title='eccles::Entity'>Entity</a>)</code></h4>
+<div class='docblock'><p>Enable an entity to be processed</p>
+</div><h4 id='method.disable' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.disable' class='fnname'>disable</a>(&amp;mut self, entity: <a class='type' href='../eccles/type.Entity.html' title='eccles::Entity'>Entity</a>)</code></h4>
+<div class='docblock'><p>Disable an entity from being processed</p>
+</div><h4 id='method.is_active' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.is_active' class='fnname'>is_active</a>(&amp;self, entity: <a class='type' href='../eccles/type.Entity.html' title='eccles::Entity'>Entity</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Check if an entity is active</p>
+</div><h4 id='method.exists' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.exists' class='fnname'>exists</a>(&amp;self, entity: <a class='type' href='../eccles/type.Entity.html' title='eccles::Entity'>Entity</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Check if an entity exists</p>
+</div><h4 id='method.remove' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.remove' class='fnname'>remove</a>(&amp;mut self, entity: <a class='type' href='../eccles/type.Entity.html' title='eccles::Entity'>Entity</a>)</code></h4>
+<div class='docblock'><p>Delete an entity</p>
+</div><h4 id='method.iter' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.iter' class='fnname'>iter</a>(&amp;self) -&gt; EntityIter</code></h4>
+<div class='docblock'><p>Iterate through all the active entities</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "eccles";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

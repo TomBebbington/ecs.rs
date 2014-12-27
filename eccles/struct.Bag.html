@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Bag` struct in crate `eccles`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Bag">
+
+    <title>eccles::Bag - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    <link rel="shortcut icon" href="http://tombebbington.github.io/favicon.png">
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>eccles</a></p><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.Bag.html'>Bag</a><a class='struct ' href='struct.ComponentManager.html'>ComponentManager</a><a class='struct ' href='struct.ComponentType.html'>ComponentType</a><a class='struct ' href='struct.EntityManager.html'>EntityManager</a><a class='struct ' href='struct.EntityRef.html'>EntityRef</a><a class='struct ' href='struct.EntityRefMut.html'>EntityRefMut</a><a class='struct ' href='struct.IntervalProcessor.html'>IntervalProcessor</a><a class='struct ' href='struct.ProcessorManager.html'>ProcessorManager</a><a class='struct ' href='struct.World.html'>World</a></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='trait.Aspect.html'>Aspect</a><a class='trait ' href='trait.Component.html'>Component</a><a class='trait ' href='trait.EntityBuilder.html'>EntityBuilder</a><a class='trait ' href='trait.IntoBag.html'>IntoBag</a><a class='trait ' href='trait.Processor.html'>Processor</a></div><div class='block macro'><h2>Macros</h2><a class='macro ' href='macro.aspect!.html'>aspect!</a><a class='macro ' href='macro.bag!.html'>bag!</a><a class='macro ' href='macro.comp!.html'>comp!</a><a class='macro ' href='macro.entity!.html'>entity!</a><a class='macro ' href='macro.world!.html'>world!</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>eccles</a>::<wbr><a class='struct' href=''>Bag</a><wbr><a class='stability Experimental' title=''>Experimental</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-36' href='../src/eccles/bag.rs.html#28-32'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Bag {
+    // some fields omitted
+}</pre><div class='docblock'><p>Collection type a bit like Vec that avoids generics yet is still type-safe</p>
+
+<p>It has a vector of bytes and allocates values to it on-the-fly.
+It stores the vtable of the type so it can drop values when they are removed.</p>
+
+<h1 id="examples" class='section-header'><a
+                           href="#examples">Examples</a></h1><pre class='rust '>
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>bag</span> <span class='op'>=</span> <span class='ident'>Bag</span>::<span class='ident'>new</span>();
+<span class='ident'>bag</span>.<span class='ident'>add</span>(<span class='number'>1i</span>);
+<span class='ident'>bag</span>.<span class='ident'>add</span>(<span class='number'>2i</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>vec</span>.<span class='ident'>len</span>(), <span class='number'>2</span>);
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>vec</span>[<span class='number'>0</span>], <span class='number'>1</span>);
+</pre>
+
+<p>There is a <code>bag!</code> macro to streamline bag initilisation. You can use it like so:
+<code>
+let bag = bag![1u, 2u, 3u, 5u, 7u, 11u];
+assert_eq(bag.len(), 6);
+</code></p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Experimental' title='Experimental'></a><code>impl <a class='struct' href='../eccles/struct.Bag.html' title='eccles::Bag'>Bag</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.new' class='fnname'>new</a>&lt;T: 'static&gt;() -&gt; <a class='struct' href='../eccles/struct.Bag.html' title='eccles::Bag'>Bag</a></code></h4>
+<div class='docblock'><p>Make a new bag of items</p>
+</div><h4 id='method.with_capacity' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.with_capacity' class='fnname'>with_capacity</a>&lt;T: 'static&gt;(capacity: <a href='http://doc.rust-lang.org/nightly/std/primitive.uint.html'>uint</a>) -&gt; <a class='struct' href='../eccles/struct.Bag.html' title='eccles::Bag'>Bag</a></code></h4>
+<div class='docblock'><p>Make a bag of items allocated to allow capacity of <code>T</code> before
+requiring re-allocation.</p>
+</div><h4 id='method.from_elem' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.from_elem' class='fnname'>from_elem</a>&lt;T: 'static + <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>&gt;(length: <a href='http://doc.rust-lang.org/nightly/std/primitive.uint.html'>uint</a>, value: T) -&gt; <a class='struct' href='../eccles/struct.Bag.html' title='eccles::Bag'>Bag</a></code></h4>
+<div class='docblock'><p>Construct a bag by filling it with <code>length</code> copies of <code>value</code></p>
+</div><h4 id='method.get' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.get' class='fnname'>get</a>&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/kinds/trait.Copy.html' title='core::kinds::Copy'>Copy</a> + 'static&gt;(&amp;self, index: <a href='http://doc.rust-lang.org/nightly/std/primitive.uint.html'>uint</a>) -&gt; T</code></h4>
+<div class='docblock'><p>Get the copy of the value at a given index</p>
+</div><h4 id='method.capacity' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.capacity' class='fnname'>capacity</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.uint.html'>uint</a></code></h4>
+<div class='docblock'><p>Get the maximum number of items this bag can hold before reallocating</p>
+</div><h4 id='method.len' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.len' class='fnname'>len</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.uint.html'>uint</a></code></h4>
+<div class='docblock'><p>Get the number of items in this bag</p>
+</div><h4 id='method.is_empty' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.is_empty' class='fnname'>is_empty</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Check if this bag is empty</p>
+</div><h4 id='method.clear' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.clear' class='fnname'>clear</a>(&amp;mut self)</code></h4>
+<div class='docblock'><p>Clear this bag of all the items in it</p>
+</div><h4 id='method.as_slice' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.as_slice' class='fnname'>as_slice</a>&lt;T: 'static&gt;(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[T]</a></code></h4>
+<div class='docblock'><p>Return this bag as a slice</p>
+</div><h4 id='method.add' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.add' class='fnname'>add</a>&lt;T: 'static&gt;(&amp;mut self, component: T) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.uint.html'>uint</a></code></h4>
+<div class='docblock'><p>Add a component to the bag</p>
+</div><h4 id='method.into_vec' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.into_vec' class='fnname'>into_vec</a>&lt;T: 'static&gt;(self) -&gt; <a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;T&gt;</code></h4>
+<div class='docblock'><p>Convert the  bag into a vector of items</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Experimental' title='Experimental'></a><code>impl&lt;T: 'static&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Index.html' title='core::ops::Index'>Index</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.uint.html'>uint</a>, T&gt; for <a class='struct' href='../eccles/struct.Bag.html' title='eccles::Bag'>Bag</a></code></h3><div class='impl-items'><h4 id='method.index' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.index' class='fnname'>index</a>&lt;'a&gt;(&amp;'a self, index: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.uint.html'>uint</a>) -&gt; &amp;'a T</code></h4>
+</div><h3 class='impl'><a class='stability Experimental' title='Experimental'></a><code>impl&lt;T: 'static&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html' title='core::ops::IndexMut'>IndexMut</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.uint.html'>uint</a>, T&gt; for <a class='struct' href='../eccles/struct.Bag.html' title='eccles::Bag'>Bag</a></code></h3><div class='impl-items'><h4 id='method.index_mut' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.index_mut' class='fnname'>index_mut</a>&lt;'a&gt;(&amp;'a mut self, index: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.uint.html'>uint</a>) -&gt; &amp;'a mut T</code></h4>
+</div><h3 class='impl'><a class='stability Unstable' title='Unstable: may be replaced by a more general conversion trait'></a><code>impl&lt;T: 'static&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/iter/trait.FromIterator.html' title='core::iter::FromIterator'>FromIterator</a>&lt;T&gt; for <a class='struct' href='../eccles/struct.Bag.html' title='eccles::Bag'>Bag</a></code></h3><div class='impl-items'><h4 id='method.from_iter' class='method'><a class='stability Unstable' title='Unstable: may be replaced by a more general conversion trait'></a><code>fn <a href='#method.from_iter' class='fnname'>from_iter</a>&lt;I: <a class='trait' href='http://doc.rust-lang.org/nightly/core/iter/trait.Iterator.html' title='core::iter::Iterator'>Iterator</a>&lt;T&gt;&gt;(iterator: I) -&gt; <a class='struct' href='../eccles/struct.Bag.html' title='eccles::Bag'>Bag</a></code></h4>
+</div><h3 class='impl'><a class='stability Experimental' title='Experimental'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../eccles/struct.Bag.html' title='eccles::Bag'>Bag</a></code></h3><div class='impl-items'><h4 id='method.drop' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "eccles";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

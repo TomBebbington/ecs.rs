@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `IntervalProcessor` struct in crate `eccles`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, IntervalProcessor">
+
+    <title>eccles::IntervalProcessor - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    <link rel="shortcut icon" href="http://tombebbington.github.io/favicon.png">
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>eccles</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.Bag.html'>Bag</a><a class='struct ' href='struct.ComponentManager.html'>ComponentManager</a><a class='struct ' href='struct.ComponentType.html'>ComponentType</a><a class='struct ' href='struct.EntityManager.html'>EntityManager</a><a class='struct ' href='struct.EntityRef.html'>EntityRef</a><a class='struct ' href='struct.EntityRefMut.html'>EntityRefMut</a><a class='struct current' href='struct.IntervalProcessor.html'>IntervalProcessor</a><a class='struct ' href='struct.ProcessorManager.html'>ProcessorManager</a><a class='struct ' href='struct.World.html'>World</a></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='trait.Aspect.html'>Aspect</a><a class='trait ' href='trait.Component.html'>Component</a><a class='trait ' href='trait.EntityBuilder.html'>EntityBuilder</a><a class='trait ' href='trait.IntoBag.html'>IntoBag</a><a class='trait ' href='trait.Processor.html'>Processor</a></div><div class='block macro'><h2>Macros</h2><a class='macro ' href='macro.aspect!.html'>aspect!</a><a class='macro ' href='macro.bag!.html'>bag!</a><a class='macro ' href='macro.comp!.html'>comp!</a><a class='macro ' href='macro.entity!.html'>entity!</a><a class='macro ' href='macro.world!.html'>world!</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>eccles</a>::<wbr><a class='struct' href=''>IntervalProcessor</a><wbr><a class='stability Experimental' title=''>Experimental</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-3249' href='../src/eccles/processor.rs.html#33-40'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct IntervalProcessor&lt;S&gt; {
+    pub interval: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>,
+    pub since_last: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>,
+    pub processor: S,
+}</pre><div class='docblock'><p>A processor that runs every interval instead of every tick.</p>
+</div><h2 class='fields'>Fields</h2>
+<table><tr><td id='structfield.interval'><a class='stability Experimental' title='Experimental'></a><code>interval</code></td><td><div class='docblock'><p>The interval, in seconds</p>
+</div></td></tr><tr><td id='structfield.since_last'><a class='stability Experimental' title='Experimental'></a><code>since_last</code></td><td><div class='docblock'><p>The number of seconds since the last update</p>
+</div></td></tr><tr><td id='structfield.processor'><a class='stability Experimental' title='Experimental'></a><code>processor</code></td><td><div class='docblock'><p>The actual processor to run</p>
+</div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Experimental' title='Experimental'></a><code>impl&lt;S&gt; <a class='struct' href='../eccles/struct.IntervalProcessor.html' title='eccles::IntervalProcessor'>IntervalProcessor</a>&lt;S&gt; where S: <a class='trait' href='../eccles/trait.Processor.html' title='eccles::Processor'>Processor</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.new' class='fnname'>new</a>(processor: S, interval: <a class='struct' href='http://doc.rust-lang.org/nightly/std/time/duration/struct.Duration.html' title='std::time::duration::Duration'>Duration</a>) -&gt; <a class='struct' href='../eccles/struct.IntervalProcessor.html' title='eccles::IntervalProcessor'>IntervalProcessor</a>&lt;S&gt;</code></h4>
+<div class='docblock'><p>Makes a new interval processor from the given processor and interval</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Experimental' title='Experimental'></a><code>impl&lt;S&gt; <a class='trait' href='../eccles/trait.Processor.html' title='eccles::Processor'>Processor</a> for <a class='struct' href='../eccles/struct.IntervalProcessor.html' title='eccles::IntervalProcessor'>IntervalProcessor</a>&lt;S&gt; where S: <a class='trait' href='../eccles/trait.Processor.html' title='eccles::Processor'>Processor</a></code></h3><div class='impl-items'><h4 id='method.run' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.run' class='fnname'>run</a>(&amp;mut self, entity: <a class='struct' href='../eccles/struct.EntityRefMut.html' title='eccles::EntityRefMut'>EntityRefMut</a>, delta: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>)</code></h4>
+<h4 id='method.run_all' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.run_all' class='fnname'>run_all</a>(&amp;mut self, entities: &amp;mut <a class='struct' href='../eccles/struct.EntityManager.html' title='eccles::EntityManager'>EntityManager</a>, components: &amp;mut <a class='struct' href='../eccles/struct.ComponentManager.html' title='eccles::ComponentManager'>ComponentManager</a>, entity: &amp;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='type' href='../eccles/type.Entity.html' title='eccles::Entity'>Entity</a>&gt;, delta: <a href='http://doc.rust-lang.org/nightly/std/primitive.f64.html'>f64</a>)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "eccles";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

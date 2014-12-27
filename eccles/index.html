@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `eccles` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, eccles">
+
+    <title>eccles - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    <link rel="shortcut icon" href="http://tombebbington.github.io/favicon.png">
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'></p>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>eccles</a><wbr><a class='stability Experimental' title=''>Experimental</a></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-0' href='../src/eccles/lib.rs.html#1-62'>[src]</a></span></h1>
+<div class='docblock'><p>An Entity Component Processor implemented in Rust</p>
+
+<p>Based on concepts detailed at <a href="http://entity-processors.wikidot.com/">this wiki</a></p>
+</div><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='macro' href='macro.aspect!.html'
+                               title='eccles::aspect!'>aspect!</a></td>
+                        <td class='docblock short'><p>Make an aspect from the given filter</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='macro' href='macro.bag!.html'
+                               title='eccles::bag!'>bag!</a></td>
+                        <td class='docblock short'><p>Efficiently construct a bag with the given values in</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='macro' href='macro.comp!.html'
+                               title='eccles::comp!'>comp!</a></td>
+                        <td class='docblock short'><p>Define a component with the given fields and default values</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='macro' href='macro.entity!.html'
+                               title='eccles::entity!'>entity!</a></td>
+                        <td class='docblock short'><p>Create a new entity with the given components in</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='macro' href='macro.world!.html'
+                               title='eccles::world!'>world!</a></td>
+                        <td class='docblock short'><p>Make a world from the given components and processors</p>
+</td>
+                    </tr>
+                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='struct' href='struct.Bag.html'
+                               title='eccles::Bag'>Bag</a></td>
+                        <td class='docblock short'><p>Collection type a bit like Vec that avoids generics yet is still type-safe</p>
+
+<p>It has a vector of bytes and allocates values to it on-the-fly.
+It stores the vtable of the type so it can drop values when they are removed.</p>
+
+<h1 id="examples" class='section-header'><a
+                           href="#examples">Examples</a></h1></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='struct' href='struct.ComponentManager.html'
+                               title='eccles::ComponentManager'>ComponentManager</a></td>
+                        <td class='docblock short'><p>Attaches component types to the component lists</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='struct' href='struct.ComponentType.html'
+                               title='eccles::ComponentType'>ComponentType</a></td>
+                        <td class='docblock short'><p>Identifies the type of component</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='struct' href='struct.EntityManager.html'
+                               title='eccles::EntityManager'>EntityManager</a></td>
+                        <td class='docblock short'><p>Manages entity allocation and deletion</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='struct' href='struct.EntityRef.html'
+                               title='eccles::EntityRef'>EntityRef</a></td>
+                        <td class='docblock short'><p>An immutable reference into a world with an entity
+This is pretty much equivalent to a MetaEntity in most ECS implementations</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='struct' href='struct.EntityRefMut.html'
+                               title='eccles::EntityRefMut'>EntityRefMut</a></td>
+                        <td class='docblock short'><p>An immutable reference into a world with an entity</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='struct' href='struct.IntervalProcessor.html'
+                               title='eccles::IntervalProcessor'>IntervalProcessor</a></td>
+                        <td class='docblock short'><p>A processor that runs every interval instead of every tick.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='struct' href='struct.ProcessorManager.html'
+                               title='eccles::ProcessorManager'>ProcessorManager</a></td>
+                        <td class='docblock short'><p>Encapsulates processors and their categories</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='struct' href='struct.World.html'
+                               title='eccles::World'>World</a></td>
+                        <td class='docblock short'><p>Encapsulates the entities, the components they consist of and
+the processors that operate upon them</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='trait' href='trait.Aspect.html'
+                               title='eccles::Aspect'>Aspect</a></td>
+                        <td class='docblock short'><p>An Aspect is used by processors as a matcher against entities,
+to check if a processor is interested in an entity</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='trait' href='trait.Component.html'
+                               title='eccles::Component'>Component</a></td>
+                        <td class='docblock short'><p>All the data for one aspect of the object</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='trait' href='trait.EntityBuilder.html'
+                               title='eccles::EntityBuilder'>EntityBuilder</a></td>
+                        <td class='docblock short'><p>A closure capably of building an entity</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='trait' href='trait.IntoBag.html'
+                               title='eccles::IntoBag'>IntoBag</a></td>
+                        <td class='docblock short'><p>Provides efficient conversion into a bag</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='trait' href='trait.Processor.html'
+                               title='eccles::Processor'>Processor</a></td>
+                        <td class='docblock short'><p>Processes components of entities
+With each Processor running continuously as if it has a private internal thread,
+performing actions on every Entity that possesses a Component of a matching
+aspect to the Processor</p>
+</td>
+                    </tr>
+                </table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Experimental' title='Experimental'></a><a class='type' href='type.Entity.html'
+                               title='eccles::Entity'>Entity</a></td>
+                        <td class='docblock short'><p>A unique ID that tags each game object as a separate item
+Implementations typically use a plain integer for this, as is used here</p>
+</td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "eccles";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>
