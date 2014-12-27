@@ -1,7 +1,7 @@
 [package]
 
 name = "eccles"
-version = "0.1.2"
+version = "0.1.3"
 description = "An Entity Component System in Rust focusing on speed and friendliness"
 exclude = [ ".gitmodules", ".gitignore", ".travis.yml" ]
 authors = [ "Tom Bebbington <tophattedcoder@gmail.com>" ]
