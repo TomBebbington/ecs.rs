@@ -2,7 +2,7 @@
 #[macro_export]
 macro_rules! bag[
     ($($value:expr),*) => ({
-        use std::slice::BoxedSlice;
+        use std::slice::BoxedSliceExt;
         let xs: ::std::boxed::Box<[_]> = box [$($value),*];
         xs.into_bag()
     });
