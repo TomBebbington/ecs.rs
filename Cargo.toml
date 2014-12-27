@@ -1,17 +1,17 @@
 [package]
 
-name = "ecs"
+name = "eccles"
 version = "0.1.1"
 authors = ["Tom Bebbington <tophattedcoder@gmail.com>"]
 
 [lib]
 
-name = "ecs"
+name = "eccles"
 path = "src/lib.rs"
 
 [[bin]]
 
-name = "ecs"
+name = "eccles"
 path = "src/main.rs"
 doc = false
 

@@ -1,7 +1,7 @@
 //! An Entity Component Processor implemented in Rust
 //! 
 //! Based on concepts detailed at [this wiki](http://entity-processors.wikidot.com/)
-#![crate_name = "ecs"]
+#![crate_name = "eccles"]
 #![crate_type = "lib"]
 #![doc(
     html_favicon_url = "http://tombebbington.github.io/favicon.png"
@@ -19,7 +19,7 @@ pub use entity::{Entity, EntityRef, EntityRefMut, EntityBuilder, EntityManager};
 pub use comp::{Component, ComponentType, ComponentManager};
 pub use world::World;
 pub use processor::{ProcessorManager, Processor, Aspect, IntervalProcessor};
-
+/// A debug macro to use internally
 macro_rules! debug(
     ($($value:expr),+) => (
         if cfg!(not(ndebug)) {

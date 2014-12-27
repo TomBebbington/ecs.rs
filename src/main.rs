@@ -1,6 +1,6 @@
 #![feature(phase)]
 #[phase(link, plugin)]
-extern crate ecs;
+extern crate "eccles" as ecs;
 use ecs::{World, EntityRef, EntityRefMut};
 
 fn main() {
