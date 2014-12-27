@@ -22,6 +22,7 @@ fn main() {
     println!("{}", world.get_entity(entities[0]).get::<Position>().x);
 }
 
+#[deriving(Copy)]
 pub struct Movement;
 impl Processor for Movement {
     fn run(&mut self, mut entity:EntityRefMut, delta: f64) {
