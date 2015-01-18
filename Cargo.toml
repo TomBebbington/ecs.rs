@@ -1,9 +1,8 @@
 [package]
 
 name = "eccles"
-version = "0.1.3"
-description = "An Entity Component System in Rust focusing on speed and friendliness"
-exclude = [ ".gitmodules", ".gitignore", ".travis.yml" ]
+version = "0.2.0"
+description = "An Entity Component System in Rust focusing on speed and user-friendliness"
 authors = [ "Tom Bebbington <tophattedcoder@gmail.com>" ]
 documentation = "http://tombebbington.github.io/ecs.rs/"
 keywords = [ "game", "ecs" ]
@@ -12,15 +11,7 @@ readme = "README.md"
 repository = "https://github.com/TomBebbington/ecs.rs"
 
 [lib]
-
 name = "eccles"
-path = "src/lib.rs"
-
-[[bin]]
-
-name = "eccles"
-path = "src/main.rs"
-doc = false
 
 [dependencies]
 time = "*"
