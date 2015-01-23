@@ -3,6 +3,7 @@
 //!
 //! For examples, please look under the examples directory
 
+#[cfg(feature = "default")]
 extern crate time;
 #[cfg(test)]
 extern crate "test" as testy;
@@ -27,6 +28,8 @@ pub trait World {
 	fn delete(&mut self, entity: Entity);
 	/// Update the processors in the world
 	fn update(&mut self, delta: f64);
+
+	#[cfg(feature = "default")]
 	/// Enter a loop in the world
 	fn enter_loop(&mut self) {
 		use time::precise_time_s;
