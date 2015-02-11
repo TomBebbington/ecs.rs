@@ -2,6 +2,8 @@
 //! that is extremely fast
 //!
 //! For examples, please look under the examples directory
+#![allow(unused_features)]
+#![feature(core, test)]
 
 #[cfg(feature = "default")]
 extern crate time;
@@ -9,7 +11,6 @@ extern crate time;
 extern crate "test" as testy;
 use std::collections::VecMap;
 #[cfg(test)]
-#[allow(unstable)]
 mod test;
 
 /// A single entity
@@ -28,19 +29,22 @@ pub trait World {
 	fn delete(&mut self, entity: Entity);
 	/// Update the processors in the world
 	fn update(&mut self, delta: f64);
-
-	#[cfg(feature = "default")]
-	/// Enter a loop in the world
-	fn enter_loop(&mut self) {
+}
+pub struct WorldIterator<W> where W:World {
+	last_time: f64,
+	world: W
+}
+impl<W> Iterator for WorldIterator<W> where W:World {
+	type Item = f64;
+	fn next(&mut self) -> Option<f64> {
 		use time::precise_time_s;
-		let mut last = precise_time_s();
-		loop {
-			let now = precise_time_s();
-			self.update(now - last);
-			last = now;
-		}
+		let current = precise_time_s();
+		let delta = current - self.last_time;
+		self.world.update(delta);
+		Some(delta)
 	}
 }
+
 #[macro_export]
 macro_rules! world{
 	(name: $name:ident,
@@ -87,6 +91,16 @@ macro_rules! world{
 				$(
 					self.$pfield.run(dt, entities.as_slice(), $(unsafe { mem::transmute(&self.$cfield2) }),+);
 				)+
+			}
+		}
+		impl ::std::iter::IntoIterator for $name {
+			type Iter = WorldIterator<$name>;
+			fn into_iter(self) -> WorldIterator<$name> {
+				use time::precise_time_s;
+				WorldIterator {
+					last_time: precise_time_s(),
+					world: self
+				}
 			}
 		}
 	)

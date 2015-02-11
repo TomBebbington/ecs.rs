@@ -1,4 +1,4 @@
-#![feature(plugin)]
+#![feature(core, plugin)]
 #[macro_use] #[plugin]
 extern crate eccles;
 use eccles::*;

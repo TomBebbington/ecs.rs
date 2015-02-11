@@ -1,7 +1,7 @@
 [package]
 
 name = "eccles"
-version = "0.2.0"
+version = "0.2.2"
 description = "An Entity Component System in Rust focusing on speed and user-friendliness"
 authors = [ "Tom Bebbington <tophattedcoder@gmail.com>" ]
 documentation = "http://tombebbington.github.io/ecs.rs/"
