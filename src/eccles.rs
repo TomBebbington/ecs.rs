@@ -5,8 +5,7 @@
 #![allow(unused_features)]
 #![feature(core, test)]
 
-#[cfg(feature = "default")]
-extern crate time;
+extern crate clock_ticks;
 #[cfg(test)]
 extern crate "test" as testy;
 use std::collections::VecMap;
@@ -37,7 +36,7 @@ pub struct WorldIterator<W> where W:World {
 impl<W> Iterator for WorldIterator<W> where W:World {
 	type Item = f64;
 	fn next(&mut self) -> Option<f64> {
-		use time::precise_time_s;
+		use clock_ticks::precise_time_s;
 		let current = precise_time_s();
 		let delta = current - self.last_time;
 		self.world.update(delta);
@@ -96,7 +95,7 @@ macro_rules! world{
 		impl ::std::iter::IntoIterator for $name {
 			type Iter = WorldIterator<$name>;
 			fn into_iter(self) -> WorldIterator<$name> {
-				use time::precise_time_s;
+				use clock_ticks::precise_time_s;
 				WorldIterator {
 					last_time: precise_time_s(),
 					world: self

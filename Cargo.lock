@@ -1,26 +1,12 @@
 [root]
 name = "eccles"
-version = "0.2.1"
+version = "0.2.3"
 dependencies = [
- "time 0.1.16 (registry+https://github.com/rust-lang/crates.io-index)",
+ "clock_ticks 0.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
-name = "gcc"
-version = "0.1.7"
+name = "clock_ticks"
+version = "0.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-
-[[package]]
-name = "libc"
-version = "0.1.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-
-[[package]]
-name = "time"
-version = "0.1.16"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-dependencies = [
- "gcc 0.1.7 (registry+https://github.com/rust-lang/crates.io-index)",
- "libc 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
-]
 
